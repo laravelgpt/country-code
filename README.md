@@ -15,11 +15,11 @@ A comprehensive Laravel package for country codes, phone codes, ISO codes, flags
 - **Population and geographic data**
 
 ### Frontend Framework Support
-- **Blade Components** (Default)
-- **Livewire Components** (Real-time)
-- **Vue.js Components** (Vue 3)
-- **React Components** (React 18)
-- **Alpine.js Components** (Lightweight)
+- **Blade Components** (Default - No additional dependencies)
+- **Livewire Components** (Requires `livewire/livewire`)
+- **Vue.js Components** (Requires `vue` npm package)
+- **React Components** (Requires `react` npm package)
+- **Alpine.js Components** (Requires `alpinejs` npm package)
 
 ### Advanced Features
 - **Interactive Country Maps** with Leaflet.js
@@ -31,11 +31,33 @@ A comprehensive Laravel package for country codes, phone codes, ISO codes, flags
 - **Phone Number Validation** and formatting
 - **Export Functionality** (JSON, CSV, PDF)
 
+## 📋 Requirements
+
+### PHP Requirements
+- **PHP**: 8.2 or higher
+- **Laravel**: 10.x or 11.x
+
+### Frontend Dependencies
+The package includes a `package.json` file with recommended frontend dependencies:
+
+```bash
+# Install frontend dependencies (optional)
+npm install
+
+# Or install specific frameworks as needed:
+npm install alpinejs        # For Alpine.js components
+npm install vue             # For Vue.js components
+npm install react react-dom # For React components
+npm install leaflet         # For interactive maps
+npm install chart.js        # For statistics charts
+```
+
 ## 🚀 Quick Installation
 
-### Basic Installation
+### Basic Installation (Blade Only)
 ```bash
 composer require laravelgpt/country-code
+php artisan country-code:install
 ```
 
 ### Interactive Installation with Frontend Selection
@@ -45,22 +67,27 @@ php artisan country-code:install --interactive
 
 ### Installation with Specific Frontend Framework
 ```bash
-# Blade (Default)
+# Blade (Default - No additional dependencies)
 php artisan country-code:install --frontend=blade
 
-# Livewire
+# Livewire (Requires livewire/livewire)
+composer require livewire/livewire
 php artisan country-code:install --frontend=livewire
 
-# Vue.js
+# Vue.js (Requires vue npm package)
+npm install vue
 php artisan country-code:install --frontend=vue
 
-# React
+# React (Requires react npm package)
+npm install react react-dom
 php artisan country-code:install --frontend=react
 
-# Alpine.js
+# Alpine.js (Requires alpinejs npm package)
+npm install alpinejs
 php artisan country-code:install --frontend=alpine
 
 # All frameworks
+npm install
 php artisan country-code:install --frontend=all
 ```
 
@@ -103,25 +130,25 @@ php artisan country-code:seed
 
 ### 5. Publish Frontend Assets
 ```bash
-# Blade components
+# Blade components (no dependencies required)
 php artisan vendor:publish --provider="Laravelgpt\CountryCode\CountryCodeServiceProvider" --tag="views"
 
-# Livewire components
+# Livewire components (requires livewire/livewire)
 php artisan vendor:publish --provider="Laravelgpt\CountryCode\CountryCodeServiceProvider" --tag="livewire"
 
-# Vue components
+# Vue components (requires vue npm package)
 php artisan vendor:publish --provider="Laravelgpt\CountryCode\CountryCodeServiceProvider" --tag="vue"
 
-# React components
+# React components (requires react npm package)
 php artisan vendor:publish --provider="Laravelgpt\CountryCode\CountryCodeServiceProvider" --tag="react"
 
-# Alpine.js components
+# Alpine.js components (requires alpinejs npm package)
 php artisan vendor:publish --provider="Laravelgpt\CountryCode\CountryCodeServiceProvider" --tag="js"
 ```
 
 ## 🎨 Frontend Framework Usage
 
-### Blade Components
+### Blade Components (No Dependencies Required)
 ```blade
 <!-- Country Selector -->
 <x-country-code::country-selector 
@@ -168,7 +195,7 @@ php artisan vendor:publish --provider="Laravelgpt\CountryCode\CountryCodeService
 />
 ```
 
-### Livewire Components
+### Livewire Components (Requires `livewire/livewire`)
 ```blade
 <!-- Livewire Country Selector -->
 <livewire:country-code::country-selector />
@@ -183,7 +210,7 @@ php artisan vendor:publish --provider="Laravelgpt\CountryCode\CountryCodeService
 <livewire:country-code::country-map />
 ```
 
-### Vue.js Components
+### Vue.js Components (Requires `vue` npm package)
 ```vue
 <template>
   <div>
