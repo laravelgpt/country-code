@@ -5,11 +5,11 @@
 ### ✨ New Features
 
 #### Multi-Framework Frontend Support
-- **Blade Components** (Enhanced)
-- **Livewire Components** (Real-time)
-- **Vue.js Components** (Vue 3)
-- **React Components** (React 18)
-- **Alpine.js Components** (Lightweight)
+- **Blade Components** (Enhanced - No additional dependencies)
+- **Livewire Components** (Real-time - Requires `livewire/livewire`)
+- **Vue.js Components** (Vue 3 - Requires `vue` npm package)
+- **React Components** (React 18 - Requires `react` npm package)
+- **Alpine.js Components** (Lightweight - Requires `alpinejs` npm package)
 
 #### New Interactive Components
 - `CountrySearch` - Advanced search with filters and autocomplete
@@ -33,16 +33,35 @@
 ### 🚀 Quick Installation
 
 ```bash
-# Basic installation
+# Basic installation (Blade only - no additional dependencies)
 composer require laravelgpt/country-code
+php artisan country-code:install
 
 # Interactive installation
 php artisan country-code:install --interactive
 
 # Framework-specific installation
-php artisan country-code:install --frontend=vue
-php artisan country-code:install --frontend=react
-php artisan country-code:install --frontend=livewire
+php artisan country-code:install --frontend=blade    # No dependencies
+php artisan country-code:install --frontend=livewire # Requires livewire/livewire
+php artisan country-code:install --frontend=vue      # Requires vue npm package
+php artisan country-code:install --frontend=react    # Requires react npm package
+php artisan country-code:install --frontend=alpine   # Requires alpinejs npm package
+```
+
+### 📦 Frontend Dependencies
+
+The package includes a `package.json` file with recommended frontend dependencies:
+
+```bash
+# Install all frontend dependencies (optional)
+npm install
+
+# Or install specific frameworks as needed:
+npm install alpinejs        # For Alpine.js components
+npm install vue             # For Vue.js components
+npm install react react-dom # For React components
+npm install leaflet         # For interactive maps
+npm install chart.js        # For statistics charts
 ```
 
 ### 📚 Documentation
@@ -53,19 +72,31 @@ php artisan country-code:install --frontend=livewire
 
 ### 🔧 Breaking Changes
 
-- **Namespace Update**: Changed from `Laravel\\CountryCode` to `Laravelgpt\\CountryCode`
+- **Namespace Update**: Changed from `Laravel\CountryCode` to `Laravelgpt\CountryCode`
 - **Package Name**: Updated to `laravelgpt/country-code`
+- **Frontend Dependencies**: Now properly separated between Composer and npm packages
+
+### 🐛 Bug Fixes
+
+- **Fixed**: Invalid `alpinejs` dependency in composer.json (Alpine.js is an npm package, not a Composer package)
+- **Added**: Proper `package.json` file for frontend dependencies
+- **Updated**: Documentation to clarify dependency requirements for each framework
 
 ### 📦 Installation
 
 ```bash
+# Basic installation (Blade components only)
 composer require laravelgpt/country-code
+php artisan country-code:install
+
+# With frontend frameworks
+npm install  # Install frontend dependencies
 php artisan country-code:install --interactive
 ```
 
 ### 🤝 Contributing
 
-We welcome contributions//github.com/laravelgpt/country-code/blob/main/CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guide](https://github.com/laravelgpt/country-code/blob/main/CONTRIBUTING.md) for details.
 
 ### 📄 License
 
