@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\CountryCode\Tests;
+namespace Laravelgpt\CountryCode\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use Laravel\CountryCode\CountryCodeServiceProvider;
+use Laravelgpt\CountryCode\CountryCodeServiceProvider;
 
 abstract class TestCase extends Orchestra
 {

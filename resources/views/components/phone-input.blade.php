@@ -1,17 +1,17 @@
 @props([
     'name' => 'phone',
-    'value' => '',
+    'value' => null,
     'country' => null,
-    'placeholder' => 'Enter phone number',
+    'placeholder' => 'Enter phone number...',
     'class' => '',
     'required' => false,
     'disabled' => false,
     'showCountrySelector' => true,
-    'validate' => true,
+    'defaultCountry' => null,
 ])
 
 @php
-    $defaultCountry = $country ?: \Laravel\CountryCode\Facades\CountryCode::getDefaultCountry();
+    $defaultCountry = $country ?: \Laravelgpt\CountryCode\Facades\CountryCode::getDefaultCountry();
     $phoneCode = $defaultCountry ? $defaultCountry->phone_code : '';
 @endphp
 

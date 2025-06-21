@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\CountryCode\Http\Controllers\CountryController;
+use Laravelgpt\CountryCode\Http\Controllers\CountryController;
 
 Route::prefix('countries')->group(function () {
     // Get all countries with pagination and filtering

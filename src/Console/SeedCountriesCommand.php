@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\CountryCode\Console;
+namespace Laravelgpt\CountryCode\Console;
 
 use Illuminate\Console\Command;
-use Laravel\CountryCode\Database\Seeders\CountrySeeder;
+use Laravelgpt\CountryCode\Database\Seeders\CountrySeeder;
 
 class SeedCountriesCommand extends Command
 {

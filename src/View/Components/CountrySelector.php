@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\CountryCode\View\Components;
+namespace Laravelgpt\CountryCode\View\Components;
 
 use Illuminate\View\Component;
-use Laravel\CountryCode\Facades\CountryCode;
+use Laravelgpt\CountryCode\Facades\CountryCode;
 
 class CountrySelector extends Component
 {

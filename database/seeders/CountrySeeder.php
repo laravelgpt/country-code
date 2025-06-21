@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\CountryCode\Database\Seeders;
+namespace Laravelgpt\CountryCode\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Laravel\CountryCode\Models\Country;
+use Laravelgpt\CountryCode\Models\Country;
 
 class CountrySeeder extends Seeder
 {

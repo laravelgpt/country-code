@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\CountryCode\Tests\Unit;
+namespace Laravelgpt\CountryCode\Tests\Unit;
 
-use Laravel\CountryCode\Tests\TestCase;
-use Laravel\CountryCode\Models\Country;
-use Laravel\CountryCode\Database\Seeders\CountrySeeder;
+use Laravelgpt\CountryCode\Tests\TestCase;
+use Laravelgpt\CountryCode\Models\Country;
+use Laravelgpt\CountryCode\Database\Seeders\CountrySeeder;
 
 class CountryModelTest extends TestCase
 {

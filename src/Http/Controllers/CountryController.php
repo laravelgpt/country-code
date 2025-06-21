@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\CountryCode\Http\Controllers;
+namespace Laravelgpt\CountryCode\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Laravel\CountryCode\Models\Country;
-use Laravel\CountryCode\Services\CountryCodeService;
+use Laravelgpt\CountryCode\Models\Country;
+use Laravelgpt\CountryCode\Services\CountryCodeService;
 
 class CountryController extends Controller
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Laravel\CountryCode\Tests\Feature;
+namespace Laravelgpt\CountryCode\Tests\Feature;
 
-use Laravel\CountryCode\Tests\TestCase;
-use Laravel\CountryCode\Models\Country;
-use Laravel\CountryCode\Facades\CountryCode;
-use Laravel\CountryCode\Database\Seeders\CountrySeeder;
+use Laravelgpt\CountryCode\Tests\TestCase;
+use Laravelgpt\CountryCode\Models\Country;
+use Laravelgpt\CountryCode\Facades\CountryCode;
+use Laravelgpt\CountryCode\Database\Seeders\CountrySeeder;
 
 class CountryCodeTest extends TestCase
 {

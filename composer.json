@@ -1,6 +1,6 @@
 {
-    "name": "laravel/country-code",
-    "description": "A comprehensive Laravel package for country codes, phone codes, ISO codes, flags, and regional data",
+    "name": "laravelgpt/country-code",
+    "description": "A comprehensive Laravel package for country codes, phone codes, ISO codes, flags, and regional data with multi-framework frontend support",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -10,43 +10,54 @@
         "iso",
         "flag",
         "regional",
-        "geography"
+        "geography",
+        "blade",
+        "livewire",
+        "vue",
+        "react",
+        "alpine",
+        "frontend",
+        "components"
     ],
     "authors": [
         {
-            "name": "Laravel Country Code Team",
-            "email": "team@laravel-country-code.com"
+            "name": "LaravelGPT Country Code Team",
+            "email": "team@laravelgpt-country-code.com"
         }
     ],
     "require": {
         "php": "^8.2",
         "laravel/framework": "^10.0|^11.0",
         "illuminate/support": "^10.0|^11.0",
-        "illuminate/database": "^10.0|^11.0"
+        "illuminate/database": "^10.0|^11.0",
+        "livewire/livewire": "^3.0",
+        "alpinejs": "^3.0"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0|^9.0",
         "phpunit/phpunit": "^10.0",
         "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^7.0"
+        "nunomaduro/collision": "^7.0",
+        "spatie/laravel-ray": "^1.0",
+        "barryvdh/laravel-debugbar": "^3.0"
     },
     "autoload": {
         "psr-4": {
-            "Laravel\\CountryCode\\": "src/"
+            "Laravelgpt\\CountryCode\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Laravel\\CountryCode\\Tests\\": "tests/"
+            "Laravelgpt\\CountryCode\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Laravel\\CountryCode\\CountryCodeServiceProvider"
+                "Laravelgpt\\CountryCode\\CountryCodeServiceProvider"
             ],
             "aliases": {
-                "CountryCode": "Laravel\\CountryCode\\Facades\\CountryCode"
+                "CountryCode": "Laravelgpt\\CountryCode\\Facades\\CountryCode"
             }
         }
     },
@@ -58,5 +69,13 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": [
+            "Laravelgpt\\CountryCode\\Console\\InstallCommand::postInstall"
+        ],
+        "post-update-cmd": [
+            "Laravelgpt\\CountryCode\\Console\\InstallCommand::postUpdate"
+        ]
+    }
 } 

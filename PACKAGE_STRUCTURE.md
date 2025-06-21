@@ -1,184 +1,83 @@
-# Laravel Country Code Package - Complete Structure
+# Laravel Country Code Package Structure
 
-## 📦 Package Overview
+## Installation
 
-A comprehensive Laravel package providing extensive country data including phone codes, ISO codes, flag emojis, and regional groupings with PHP 8.2+ support.
-
-## 🏗️ Package Structure
-
-```
-laravel-country-code/
-├── composer.json                 # Package configuration
-├── README.md                     # Comprehensive documentation
-├── LICENSE.md                    # MIT License
-├── CONTRIBUTING.md               # Contributing guidelines
-├── CHANGELOG.md                  # Version history
-├── PACKAGE_STRUCTURE.md          # This file
-├── phpunit.xml                   # PHPUnit configuration
-│
-├── config/
-│   └── country-code.php          # Package configuration
-│
-├── src/
-│   ├── CountryCodeServiceProvider.php    # Main service provider
-│   ├── Services/
-│   │   └── CountryCodeService.php        # Core service class
-│   ├── Models/
-│   │   └── Country.php                   # Eloquent model
-│   ├── Facades/
-│   │   └── CountryCode.php               # Facade for easy access
-│   ├── Http/
-│   │   └── Controllers/
-│   │       └── CountryController.php     # API controller
-│   ├── Console/
-│   │   └── SeedCountriesCommand.php      # Artisan command
-│   ├── Rules/
-│   │   └── ValidCountryCode.php          # Validation rule
-│   └── View/
-│       └── Components/
-│           ├── CountrySelector.php       # Blade component class
-│           ├── CountryFlag.php           # Blade component class
-│           └── PhoneInput.php            # Blade component class
-│
-├── database/
-│   ├── migrations/
-│   │   └── 2024_01_01_000001_create_countries_table.php
-│   └── seeders/
-│       └── CountrySeeder.php             # Comprehensive country data
-│
-├── routes/
-│   └── api.php                           # API routes
-│
-├── resources/
-│   └── views/
-│       └── components/
-│           ├── country-selector.blade.php # Country dropdown component
-│           ├── country-flag.blade.php     # Flag display component
-│           └── phone-input.blade.php      # Phone input component
-│
-└── tests/
-    └── Feature/
-        └── CountryCodeTest.php           # Comprehensive test suite
-```
-
-## 🌟 Key Features
-
-### 1. **Comprehensive Country Database**
-- 200+ countries with complete information
-- Phone codes and international dialing formats
-- ISO 3166-1 alpha-2 and alpha-3 codes
-- Unicode flag emojis
-- Continental and regional groupings
-- Currency information and timezone data
-- Population and geographic data
-- UN membership and independence status
-
-### 2. **Laravel Integration**
-- **Eloquent Model**: Full Country model with relationships and scopes
-- **Service Layer**: CountryCodeService with caching and search
-- **Facade**: Easy access via `CountryCode::` facade
-- **API Controller**: RESTful endpoints for all operations
-- **Validation**: Custom validation rule for country codes
-- **Artisan Commands**: Database seeding and management
-
-### 3. **Blade Components**
-- **Country Selector**: Searchable dropdown with flags and phone codes
-- **Country Flag**: Display flags with various sizes and options
-- **Phone Input**: Phone number input with country code selection
-
-### 4. **API Endpoints**
-- `GET /api/countries` - List all countries with pagination
-- `GET /api/countries/{code}` - Get specific country by ISO code
-- `GET /api/countries/search` - Search countries
-- `GET /api/countries/phone/{code}` - Get countries by phone code
-- `GET /api/countries/continent/{continent}` - Get countries by continent
-- `GET /api/countries/region/{region}` - Get countries by region
-- `GET /api/countries/continents` - Get all continents
-- `GET /api/countries/regions` - Get all regions
-- `POST /api/countries/validate` - Validate country code
-- And many more...
-
-### 5. **Configuration System**
-- Default country setting
-- Supported languages
-- Cache configuration
-- API settings
-- Regional groupings
-- Phone number formats
-- Database settings
-
-## 🚀 Quick Start
-
-### Installation
 ```bash
-composer require laravel/country-code
+composer require laravelgpt/country-code
 ```
 
-### Publish Configuration
+## Publishing Configuration
+
 ```bash
-php artisan vendor:publish --provider="Laravel\CountryCode\CountryCodeServiceProvider"
+php artisan vendor:publish --provider="Laravelgpt\CountryCode\CountryCodeServiceProvider"
 ```
 
-### Run Migrations
-```bash
-php artisan migrate
-```
-
-### Seed Database
-```bash
-php artisan country-code:seed
-```
-
-## 💡 Usage Examples
+## Usage Examples
 
 ### Using the Facade
+
 ```php
-use Laravel\CountryCode\Facades\CountryCode;
+use Laravelgpt\CountryCode\Facades\CountryCode;
 
 // Get all countries
 $countries = CountryCode::all();
 
-// Find by ISO code
-$usa = CountryCode::findByIso('US');
+// Find country by ISO code
+$country = CountryCode::findByIso('US');
 
-// Find by phone code
-$countries = CountryCode::findByPhoneCode('1');
+// Find country by phone code
+$country = CountryCode::findByPhoneCode('1');
+
+// Search countries
+$results = CountryCode::search('United');
 
 // Get countries by continent
 $europeanCountries = CountryCode::getByContinent('Europe');
+
+// Get countries by region
+$westernCountries = CountryCode::getByRegion('Western Europe');
+
+// Get UN member countries
+$unMembers = CountryCode::getUnMembers();
+
+// Get independent countries
+$independent = CountryCode::getIndependent();
+
+// Get default country
+$default = CountryCode::getDefaultCountry();
+
+// Validate country code
+$isValid = CountryCode::validate('US');
 ```
 
-### Using Eloquent Model
-```php
-use Laravel\CountryCode\Models\Country;
+### Using the Model
 
+```php
+use Laravelgpt\CountryCode\Models\Country;
+
+// Find country by ISO
 $country = Country::where('iso_alpha2', 'US')->first();
+
+// Get phone code
 echo $country->phone_code; // 1
+
+// Get flag emoji
 echo $country->flag_emoji; // 🇺🇸
+
+// Get country name
+echo $country->name; // United States
+
+// Get region
+echo $country->region; // North America
+
+// Get continent
+echo $country->continent; // Americas
 ```
 
-### Using Blade Components
-```blade
-<x-country-code::selector 
-    name="country" 
-    :selected="$selectedCountry"
-    placeholder="Select a country"
-/>
+### Validation Rule
 
-<x-country-code::flag 
-    :country="$country" 
-    size="lg"
-/>
-
-<x-country-code::phone-input 
-    name="phone" 
-    :country="$country"
-/>
-```
-
-### Validation
 ```php
-use Laravel\CountryCode\Rules\ValidCountryCode;
+use Laravelgpt\CountryCode\Rules\ValidCountryCode;
 
 $request->validate([
     'country_code' => ['required', new ValidCountryCode],

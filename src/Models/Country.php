@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\CountryCode\Models;
+namespace Laravelgpt\CountryCode\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

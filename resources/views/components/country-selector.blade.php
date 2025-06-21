@@ -1,14 +1,43 @@
 @props([
     'name' => 'country',
-    'selected' => null,
-    'placeholder' => 'Select a country',
+    'value' => null,
+    'placeholder' => 'Select a country...',
     'class' => '',
     'required' => false,
     'disabled' => false,
-    'searchable' => true,
-    'showFlags' => true,
-    'showPhoneCodes' => true,
+    'showFlag' => true,
+    'showPhoneCode' => false,
+    'groupBy' => null, // 'continent', 'region', or null
+    'filterBy' => null, // 'independent', 'un_members', or null
 ])
+
+@php
+    $countries = collect();
+    
+    if ($groupBy === 'continent') {
+        $continents = \Laravelgpt\CountryCode\Facades\CountryCode::getContinents();
+        foreach ($continents as $continent) {
+            $continentCountries = \Laravelgpt\CountryCode\Facades\CountryCode::getByContinent($continent);
+            $countries->put($continent, $continentCountries);
+        }
+    } elseif ($groupBy === 'region') {
+        $regions = \Laravelgpt\CountryCode\Facades\CountryCode::getRegions();
+        foreach ($regions as $region) {
+            $regionCountries = \Laravelgpt\CountryCode\Facades\CountryCode::getByRegion($region);
+            $countries->put($region, $regionCountries);
+        }
+    } else {
+        $allCountries = \Laravelgpt\CountryCode\Facades\CountryCode::all();
+        
+        if ($filterBy === 'independent') {
+            $allCountries = \Laravelgpt\CountryCode\Facades\CountryCode::getIndependent();
+        } elseif ($filterBy === 'un_members') {
+            $allCountries = \Laravelgpt\CountryCode\Facades\CountryCode::getUnMembers();
+        }
+        
+        $countries = $allCountries;
+    }
+@endphp
 
 <div class="country-selector {{ $class }}" x-data="countrySelector()">
     <select 
@@ -21,18 +50,18 @@
         @change="onCountryChange"
     >
         <option value="">{{ $placeholder }}</option>
-        @foreach(\Laravel\CountryCode\Facades\CountryCode::all() as $country)
+        @foreach($countries as $country)
             <option 
                 value="{{ $country->iso_alpha2 }}"
                 data-phone-code="{{ $country->phone_code }}"
                 data-flag="{{ $country->flag_emoji }}"
-                {{ $selected && $selected == $country->iso_alpha2 ? 'selected' : '' }}
+                {{ $value && $value == $country->iso_alpha2 ? 'selected' : '' }}
             >
-                @if($showFlags)
+                @if($showFlag)
                     {{ $country->flag_emoji }} 
                 @endif
                 {{ $country->name }}
-                @if($showPhoneCodes)
+                @if($showPhoneCode)
                     (+{{ $country->phone_code }})
                 @endif
             </option>
@@ -65,7 +94,7 @@
 <script>
 function countrySelector() {
     return {
-        selectedCountry: @json($selected),
+        selectedCountry: @json($value),
         searchQuery: '',
         selectedCountryInfo: null,
         

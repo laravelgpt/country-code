@@ -1,8 +1,8 @@
 <?php
 
-namespace Laravel\CountryCode\Services;
+namespace Laravelgpt\CountryCode\Services;
 
-use Laravel\CountryCode\Models\Country;
+use Laravelgpt\CountryCode\Models\Country;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;

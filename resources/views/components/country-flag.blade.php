@@ -1,19 +1,18 @@
 @props([
-    'country' => null,
+    'country',
     'code' => null,
-    'size' => 'md',
+    'size' => 'sm',
+    'showName' => false,
     'class' => '',
-    'showTooltip' => true,
-    'clickable' => false,
 ])
 
 @php
     $countryData = null;
     
     if ($country) {
-        $countryData = is_string($country) ? \Laravel\CountryCode\Facades\CountryCode::findByIso($country) : $country;
+        $countryData = is_string($country) ? \Laravelgpt\CountryCode\Facades\CountryCode::findByIso($country) : $country;
     } elseif ($code) {
-        $countryData = \Laravel\CountryCode\Facades\CountryCode::findByIso($code);
+        $countryData = \Laravelgpt\CountryCode\Facades\CountryCode::findByIso($code);
     }
     
     $sizes = [
@@ -30,12 +29,9 @@
 
 @if($countryData)
     <div 
-        class="country-flag inline-flex items-center justify-center {{ $sizeClass }} {{ $class }} {{ $clickable ? 'cursor-pointer hover:scale-110 transition-transform' : '' }}"
-        @if($showTooltip)
+        class="country-flag inline-flex items-center justify-center {{ $sizeClass }} {{ $class }}"
+        @if($showName)
             title="{{ $countryData->name }}"
-        @endif
-        @if($clickable)
-            onclick="window.dispatchEvent(new CustomEvent('country-flag-clicked', { detail: { country: '{{ $countryData->iso_alpha2 }}', name: '{{ $countryData->name }}' } }))"
         @endif
     >
         <span class="flag-emoji" role="img" aria-label="Flag of {{ $countryData->name }}">

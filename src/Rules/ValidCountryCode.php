@@ -1,10 +1,10 @@
 <?php
 
-namespace Laravel\CountryCode\Rules;
+namespace Laravelgpt\CountryCode\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Laravel\CountryCode\Models\Country;
+use Laravelgpt\CountryCode\Models\Country;
 
 class ValidCountryCode implements ValidationRule
 {

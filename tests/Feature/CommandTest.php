@@ -1,9 +1,9 @@
 <?php
 
-namespace Laravel\CountryCode\Tests\Feature;
+namespace Laravelgpt\CountryCode\Tests\Feature;
 
-use Laravel\CountryCode\Tests\TestCase;
-use Laravel\CountryCode\Models\Country;
+use Laravelgpt\CountryCode\Tests\TestCase;
+use Laravelgpt\CountryCode\Models\Country;
 
 class CommandTest extends TestCase
 {
