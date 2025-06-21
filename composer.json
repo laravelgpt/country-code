@@ -1,0 +1,62 @@
+{
+    "name": "laravel/country-code",
+    "description": "A comprehensive Laravel package for country codes, phone codes, ISO codes, flags, and regional data",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "country",
+        "phone",
+        "iso",
+        "flag",
+        "regional",
+        "geography"
+    ],
+    "authors": [
+        {
+            "name": "Laravel Country Code Team",
+            "email": "team@laravel-country-code.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0",
+        "illuminate/database": "^10.0|^11.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^10.0",
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laravel\\CountryCode\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Laravel\\CountryCode\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laravel\\CountryCode\\CountryCodeServiceProvider"
+            ],
+            "aliases": {
+                "CountryCode": "Laravel\\CountryCode\\Facades\\CountryCode"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+} 
